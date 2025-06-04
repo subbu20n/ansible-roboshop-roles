@@ -6,12 +6,12 @@
 - name: remove /app directory
   ansible.builtin.file:
     path: /app
-    dest: absent
+    state: absent
 
 - name: create /app directory
   ansible.builtin.file:
     path: /app
-    dest: present
+    state: present
 
 - name: Download application
   ansible.builtin.unarchive:
