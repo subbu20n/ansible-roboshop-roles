@@ -4,4 +4,4 @@
   var_files:
   - vault/mysql.yaml
   tasks: 
-  - "{{ component }}"
+  - "{{ component }}
