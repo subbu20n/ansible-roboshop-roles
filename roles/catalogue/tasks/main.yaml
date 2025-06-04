@@ -26,7 +26,7 @@
   ansible.builtin.debug:
    msg: "{{ catalogue_output }}" 
 
-- name: systeemd setup
+- name: systemd setup
   include_role:
     name: common
     tasks_from: systemd.yaml
