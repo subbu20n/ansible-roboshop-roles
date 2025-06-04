@@ -20,7 +20,7 @@
     remote_src: yes
 
 - name: install dependencies
-  community.builtin.npm:
+  community.general.npm:
     path: /app
 
 - name: restart {{ component }}
