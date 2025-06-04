@@ -23,7 +23,7 @@
 - name: create html directory
   ansible.builtin.file:
      path: /usr/share/nginx/html
-     state: absent
+     state: directory
 
 - name: Download frontend code
   ansible.builtin.get_url:
@@ -40,7 +40,7 @@
   ansible.builtin.file:
     path: /etc/nginx/nginx.conf 
     state: absent 
-    
+
 - name: copy nginx conf 
   ansible.builtin.template:
     src: nginx.conf.j2 
