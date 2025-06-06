@@ -20,3 +20,8 @@
   - /app/db/schema.sql
   - /app/db/app-user.sql 
   - /app/db/master-data.sql      
+
+  - name: maven setup
+    include_role:
+      name: common 
+      tasks_from: systemd.yaml
