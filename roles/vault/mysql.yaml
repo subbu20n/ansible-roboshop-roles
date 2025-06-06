@@ -3,5 +3,5 @@
   connection: local 
   vars_files:
   - vault/mysql.yaml
-  tasks: 
+  roles:
   - "{{ component }}"
