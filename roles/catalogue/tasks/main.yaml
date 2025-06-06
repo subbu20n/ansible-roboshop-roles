@@ -3,39 +3,10 @@
       name: common 
       tasks_from: app-setup
   
-  
-  
-  - name: disable nodejs
-    ansible.builtin.command: dnf module disable nodejs -y 
-
-  - name: enable nodejs:20 
-    ansible.builtin.command: dnf module enable nodejs:20 -y 
-
-  - name: install nodejs 
-    ansible.builtin.dnf:
-      name: nodejs
-      state: installed 
-
-  
-
-  - name: insatll dependencies
-    community.general.npm:
-      path: /app    
-
-  - name: copy catalogue service
-    ansible.builtin.copy:
-       src: catalogue.service
-       dest: /etc/systemd/system/catalogue.service
-
-  - name: systemctl daemon reload
-    ansible.builtin.systemd_service:
-      daemon_reload: true
-
-  - name: start and enable catalogue 
-    ansible.builtin.service:
-      name: catalogue 
-      state: started
-      enabled: yes
+  - name: nodejs setup
+    include_role:
+      name: common 
+      tasks_from: nodejs
 
   - name: copy mongodb repo
     ansible.builtin.copy:
@@ -58,3 +29,9 @@
   - name: load products 
     ansible.builtin.shell: mongosh --host mongodb.subbuaws.site </app/db/master-data.js   
     when: catalogue_output.stdout | int < 0                                                      
+
+  - name: systemd setup
+    include_role:
+      name: common 
+      tasks_from: systemd.yaml
+  
