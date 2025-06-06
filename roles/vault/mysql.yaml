@@ -1,6 +1,6 @@
 - name: configure {{ component }}
-  hosts: local
-  connection: local 
+  become: yes
+  hosts: "{{ component }}"
   vars_files:
   - vault/mysql.yaml
   roles:
