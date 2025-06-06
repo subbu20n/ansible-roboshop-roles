@@ -3,23 +3,23 @@
     name: "{{ item }}"
     state: installed
   loop:
+  - maven
   - mysql
-  - maven    
-
-- name: install PYMYSQL and cryptography 
+  
+- name: install PyMySQL and cryptography 
   ansible.builtin.pip:
     name: "{{ item }}"
     executable: pip3.9
   loop:
-  - PYMYSQL 
-  - cryptography       
+  - cryptography
+  - PyMySQL
 
-  - name: install  maven dependencies
-    ansible.builtin.commnad: mvn clean package
-    args: 
-      chdir: /app
+- name: install maven dependencies
+  ansible.builtin.command: mvn clean package
+  args:
+    chdir: /app
 
-  - name: rename jar file
-    ansible.builtin.command: "mv target/{{ shipping }}-1.0.jar {{ component }}.jar" 
-    args: 
-      chdir: /app    
+- name: rename jar file
+  ansible.builtin.command: "mv target/{{ component }}-1.0.jar {{ component }}.jar"
+  args:
+    chdir: /app

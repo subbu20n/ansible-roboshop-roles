@@ -1,12 +1,12 @@
 - name: app setup
   include_role:
-   name: common
-   tasks_from: app-setup
+    name: common
+    tasks_from: app-setup
 
-- name: maven setup 
+- name: maven setup
   include_role:
     name: common
-    tasks_from: maven.yaml
+    tasks_from: maven
 
 - name: import data
   community.mysql.mysql_db:
@@ -18,10 +18,10 @@
     target: "{{ item }}"
   loop:
   - /app/db/schema.sql
-  - /app/db/app-user.sql 
-  - /app/db/master-data.sql      
+  - /app/db/app-user.sql
+  - /app/db/master-data.sql
 
-  - name: maven setup
-    include_role:
-      name: common 
-      tasks_from: systemd.yaml
+- name: systemd setup
+  include_role:
+    name: common
+    tasks_from: systemd

@@ -1,5 +1,4 @@
-CART_HOST: cart.subbuaws.site
-MYSQL_HOST: mysql.subbuaws.site 
-MYSQL_ROOT_PASSWORD: RoboShop@1
+MYSQL_HOST: mysql.subbuaws.site
 MYSQL_ROOT_USER: root
-MYSQL_HOST: mysql.subbuaws.site 
+MYSQL_ROOT_PASSWORD: RoboShop@1
+CART_HOST: cart.subbuaws.site
