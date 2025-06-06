@@ -29,5 +29,5 @@
     tags: 
     - deployment
     import_role:
-      name: common 
-      tasks_from: deployment.yaml    
+      name: common
+      tasks_from: deployment.yaml
