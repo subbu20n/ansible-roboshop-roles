@@ -23,7 +23,7 @@
 
 - name: install dependencies
   community.general.npm:
-    path: /app
+  path: /app
 
 - name: restart {{ component }}
   ansible.builtin.service:
