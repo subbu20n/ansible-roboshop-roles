@@ -11,4 +11,4 @@
     ansible.builtin.service:
       name: catalogue 
       state: restarted  # even app is not running we can restart
-      enabled: ye
+      enabled: yes
