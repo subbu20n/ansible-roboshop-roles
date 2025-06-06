@@ -9,6 +9,6 @@
     tasks_from: python.yaml 
 
 - name: systemd setup
-  include_from: 
+  include_role: 
     name: common
     tasks_from: systemd.yaml     
