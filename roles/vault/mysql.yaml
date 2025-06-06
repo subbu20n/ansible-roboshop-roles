@@ -1,0 +1,7 @@
+- name: configure {{ component }}
+  hosts: local
+  connection: local 
+  vars_files:
+  - vault/mysql.yaml
+  tasks: 
+  - "{{ component }}"
