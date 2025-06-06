@@ -24,3 +24,10 @@
     ansible.builtin.service:
       name: mongod 
       state: restarted 
+
+  - name: deployment 
+    tags: 
+    - deployment
+    include_role:
+      name: common 
+      tasks_from: deployment.yaml    
