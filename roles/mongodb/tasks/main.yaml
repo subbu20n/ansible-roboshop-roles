@@ -26,8 +26,8 @@
       state: restarted 
 
   - name: deployment 
-    tags: 
-    - deployment
-    import_role:
-      name: common
+    tags:
+    - deployment 
+    include_role:
+      name: common 
       tasks_from: deployment.yaml
