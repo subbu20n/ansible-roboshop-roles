@@ -4,4 +4,4 @@
   vars_files: 
   - vault/mysql.yaml
   roles: 
-  - "{{ component }}
+  - "{{ component }}"
