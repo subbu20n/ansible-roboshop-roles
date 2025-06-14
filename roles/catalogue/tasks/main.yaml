@@ -27,15 +27,15 @@
 - name: catalogue output 
   ansible.builtin.debug: 
     msg: "{{ catalogue_output }}"
-  ignore_errors: true
-  ignore_unreachble: true 
+    ignore_errors: true
+    ignore_unreachble: true 
 
 
 - name: load products 
   ansible.builtin.shell: mongosh --host mongodb.subbuaws.site  </app/db/master-data.js   
   when: catalogue_output.stdout | int <0         
-  ignore_errors: true 
-  ignore_unreachable: true 
+   ignore_errors: true 
+   ignore_unreachable: true 
 
 - name: systemd_setup 
   include_role: 
