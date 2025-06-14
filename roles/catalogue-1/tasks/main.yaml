@@ -1,0 +1,43 @@
+- name: app_setup
+  include_role: 
+    name: common 
+    tasks_from: app_setup 
+
+- name: nodejs_setup 
+  include_role: 
+    name: common 
+    tasks_from: nodejs 
+
+- name: copy mongodb repo 
+  ansible.builtin.copy: 
+    src: mongo.repo 
+    dest: /etc/yum.repos.d/mongod.repo 
+
+- name: install mongodb client 
+  ansible.builtin.dnf:
+    name: mongodb-mongosh             
+    state: installed 
+
+- name: check products loaded or not 
+  ansible.builtin.command: mongosh --host mongodb.subbuaws.site --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
+  register: catalogue_output 
+
+- name: catalogue output 
+  ansible.builtin.debug: 
+    msg: "{{ catalogue_output }}"
+
+- name: load products 
+  ansible.builtin.shell: mongosh --host mongodb.subbuaws.site  </app/db/master-data.js   
+  when: catalogue_output.stdout | int <0         
+
+- name: systemd_setup 
+  include_role: 
+    name: common 
+    tasks_from: systemd.yaml 
+
+- name: deployment 
+  tags: 
+  - deployment 
+  import role: 
+     name: common
+     tasks_from: deployment.yaml        
