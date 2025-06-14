@@ -1,5 +1,0 @@
-- name: configure catalogue 
-  hosts: catalogue 
-  become: yes 
-  roles: 
-  - catalogue
