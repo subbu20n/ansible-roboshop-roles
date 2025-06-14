@@ -20,7 +20,7 @@
 
 - name: install depenencies 
   community.general.npm:
-  path: /app 
+   path: /app 
 
 
 - name: restart {{ component }}
