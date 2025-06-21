@@ -18,4 +18,4 @@
   - deployment 
   import_role: 
     name: common
-    tasks_from: deployment.yaml     
+    tasks_from: deployment.y
