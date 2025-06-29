@@ -4,4 +4,4 @@
   connection: local
   become: yes 
   roles: # this folder automatically load a folder called roles in current working directory
-  - "{{ component }}
+  - "{{ component }}"
