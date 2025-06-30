@@ -42,9 +42,9 @@
     name: common 
     tasks_from: systemd.yaml 
 
-- name: deployment 
-  tags: 
-  - deployment 
-  import_role: 
-     name: common
-     tasks_from: deployment.yaml
+# - name: deployment 
+#   tags: 
+#   - deployment 
+#   import_role: 
+#      name: common
+#      tasks_from: deployment.yaml
