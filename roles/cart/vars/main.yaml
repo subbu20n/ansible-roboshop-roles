@@ -1,2 +1,2 @@
-REDIS_HOST: redis.subbuaws.site 
-CATALOGUE_HOST: catalogue.subbuaws.site 
+CATALOGUE_HOST: catalogue.subbuaws.site
+REDIS_HOST: redis.subbuaws.site

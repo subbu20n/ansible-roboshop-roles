@@ -1,50 +1,49 @@
-- name: app-setup
-  include_role: 
-    name: common 
-    tasks_from: app-setup 
+- name: app setup
+  include_role:
+    name: common
+    tasks_from: app-setup
 
-- name: nodejs-setup 
-  include_role: 
-    name: common 
-    tasks_from: nodejs 
+- name: nodejs setup
+  include_role:
+    name: common
+    tasks_from: nodejs
 
-- name: copy mongodb repo 
-  ansible.builtin.copy: 
-    src: mongo.repo 
-    dest: /etc/yum.repos.d/mongod.repo 
+- name: copy mongodb repo
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
 
-- name: install mongodb client 
+- name: install mongodb client
   ansible.builtin.dnf:
-    name: mongodb-mongosh             
-    state: installed 
+    name: mongodb-mongosh
+    state: present
 
-- name: check products loaded or not 
-  ansible.builtin.command: mongosh --host mongodb.subbuaws.site --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
-  register: catalogue_output 
-  ignore_errors: true
-  ignore_unreachable: true
+- name: check products loaded or not
+  ansible.builtin.command: mongosh --host {{ MONGODB_HOST }} --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
+  register: catalogue_output
+  # ignore_errors: true
+  # ignore_unreachable: true
 
-- name: catalogue output 
-  ansible.builtin.debug: 
+- name: print catalogue output
+  ansible.builtin.debug:
     msg: "{{ catalogue_output }}"
-  ignore_errors: true
-  ignore_unreachable: true 
+  # ignore_errors: true
+  # ignore_unreachable: true
 
+- name: load products
+  ansible.builtin.shell: mongosh --host {{ MONGODB_HOST }} < /app/db/master-data.js
+  when: catalogue_output.stdout | int < 0
+  # ignore_errors: true
+  # ignore_unreachable: true
 
-- name: load products 
-  ansible.builtin.shell: mongosh --host mongodb.subbuaws.site  </app/db/master-data.js   
-  when: catalogue_output.stdout | int <0         
-  ignore_errors: true 
-  ignore_unreachable: true 
+- name: systemd setup
+  include_role:
+    name: common
+    tasks_from: systemd.yaml
 
-- name: systemd_setup 
-  include_role: 
-    name: common 
-    tasks_from: systemd.yaml 
-
-# - name: deployment 
+# - name: Deployment
 #   tags: 
-#   - deployment 
-#   import_role: 
-#      name: common
-#      tasks_from: deployment.yaml
+#   - deployment
+#   import_role:
+#     name: common
+#     tasks_from: deployment

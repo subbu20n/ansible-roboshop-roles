@@ -1,5 +1,5 @@
-- name: configure mongdb component
+- name: configure mongodb component
+  become: yes
   hosts: mongodb
-  become: yes 
-  roles: # this will automatically load a folder called roles in current working directory
+  roles: # this will automatically load a folder called roles in current working directory.
   - mongodb

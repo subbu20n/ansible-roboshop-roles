@@ -1,3 +1,5 @@
 CART_HOST: cart.subbuaws.site
-USER_HOST: user.subbuaws.site 
-RABBITMQ_HOST: rabbitmq.subbuaws.site 
+USER_HOST: user.subbuaws.site
+RABBITMQ_HOST: rabbitmq.subbuaws.site
+RABBITMQ_USER: roboshop
+RABBITMQ_PASSWORD: roboshop123

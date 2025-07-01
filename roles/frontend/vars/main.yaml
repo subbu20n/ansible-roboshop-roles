@@ -1,3 +1,5 @@
-CATALOGUE_HOST: catalogue.subbuaws.site 
-USER_HOST: user.subbuaws.site 
+CATALOGUE_HOST: catalogue.subbuaws.site
+USER_HOST: user.subbuaws.site
 CART_HOST: cart.subbuaws.site
+SHIPPING_HOST: shipping.subbuaws.site
+PAYMENT_HOST: payment.subbuaws.site
