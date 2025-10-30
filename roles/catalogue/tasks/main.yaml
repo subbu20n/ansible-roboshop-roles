@@ -8,7 +8,7 @@
     name: common
     tasks_from: nodejs
 
-- name: copy mongodb repo
+- name: copy mongodb repo 
   ansible.builtin.copy:
     src: mongo.repo
     dest: /etc/yum.repos.d/mongo.repo
@@ -24,9 +24,9 @@
   # ignore_errors: true
   # ignore_unreachable: true
 
-- name: print catalogue output
-  ansible.builtin.debug:
-    msg: "{{ catalogue_output }}"
+- name: print catalogue output 
+  ansible.builtin.debug:  
+    msg: "{{ catalogue_output }}" 
   # ignore_errors: true
   # ignore_unreachable: true
 
@@ -38,12 +38,12 @@
 
 - name: systemd setup
   include_role:
-    name: common
+    name: common 
     tasks_from: systemd.yaml
 
-# - name: Deployment
-#   tags: 
-#   - deployment
-#   import_role:
-#     name: common
-#     tasks_from: deployment
+- name: Deployment 
+  tags: 
+  - deployment
+  import_role: 
+     name: common 
+     tasks_from: deployment 
